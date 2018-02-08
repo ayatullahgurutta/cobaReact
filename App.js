@@ -1,33 +1,34 @@
-import React from 'react';
-import { StyleSheet, Text, TextInput, View, ListView, Image } from 'react-native';
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
 
-export default class App extends React.Component {
-  componentDidMount() {
-	let userUrl = 'https://api.mesosfer.com/api/v2/users';
-    return fetch(userUrl, {
-        		  method: 'GET',
-  				  headers: {
-					"Content-Type": "application/json",
-					"X-Mesosfer-AppId": "tzVOewKnss",
-					"X-Mesosfer-AppKey": "ACNRwDdYOzGekYkDPbd1ffNpEPH0nr8J"
-  		  		  }
-        		}
-     		  )
-    		  .then((response) => response.json())
-    		  .then((responseJson) => {
-    		  })
-    .catch((error) => {
-      console.error(error);
-    });
-  }
+import React, { Component } from 'react';
+import { Platform, StyleSheet, Text, TextInput, View, Image } from 'react-native';
 
+const instructions = Platform.select({
+  ios: 'Press Cmd+R to reload,\n' +
+    'Cmd+D or shake for dev menu',
+  android: 'Double tap R on your keyboard to reload,\n' +
+    'Shake or press menu button for dev menu',
+});
+
+type Props = {};
+export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Hello</Text>
-        <Image source={require('./img/V_icon.png')} style={{width: 150, height: 150}}/>
-        <Text>Username: </Text>
-		<TextInput style={{width: 150, height: 30}}/>
+        <Text style={styles.welcome}>
+          Welcome!
+        </Text>
+        <Image source={require('./img/V_icon.png')} style={styles.images}/>
+        <Text style={styles.instructions}>
+          To get started, edit App.js
+        </Text>
+        <Text style={styles.instructions}>
+          {instructions}
+        </Text>
       </View>
     );
   }
@@ -36,8 +37,23 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#87ceeb',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#B0E0E6',
   },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
+  images: {
+    width: 150,
+    height: 150,
+    marginBottom: 20
+  }
 });
